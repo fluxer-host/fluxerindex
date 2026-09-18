@@ -1,0 +1,160 @@
+// navbar
+.navbar {
+  background-color: $black;
+  flex-shrink: 0;
+}
+
+.navbar-inner {
+  max-width: $max-width;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 2rem;
+  height: 64px;
+}
+
+.navbar-brand {
+  color: $white;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  padding: 0.6rem 1rem;
+  border-radius: $tab-radius $tab-radius 0 0;
+  margin-right: 2rem;
+  line-height: 1;
+  padding-bottom: 0.85rem;
+
+  svg {
+    height: 1.2em;
+    width: auto;
+    vertical-align: -0.18em;
+    margin-right: 0.45rem;
+    image-rendering: auto;
+  }
+}
+
+.navbar-tabs {
+  display: flex;
+  list-style: none;
+  gap: 2px;
+  align-items: flex-end;
+}
+
+.tab {
+  display: block;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $grey-400;
+  border-radius: $tab-radius $tab-radius 0 0;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    color: $white;
+    background-color: $surface-dark;
+  }
+}
+
+.tab:hover:not(.active) {
+  color: color-mix(in srgb, var(--accent, $white) 75%, $white);
+}
+
+.tab.active {
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+// rss button
+.rss-btn {
+  margin-left: auto;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: $border-radius;
+  background-color: $orange;
+  color: $white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    image-rendering: pixelated;
+  }
+}
+
+@media (orientation: portrait) {
+  .rss-btn {
+    padding: 0.35rem;
+
+    .rss-label {
+      display: none;
+    }
+  }
+}
+
+// footer
+.site-footer {
+  background-color: $black;
+  color: $grey-400;
+  text-align: center;
+  padding: 1.5rem 2rem;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1rem;
+  border-radius: $card-radius $card-radius 0 0;
+
+  p { margin-bottom: 0.2rem; }
+  p:last-child { margin-bottom: 0; }
+
+  a {
+    color: $white;
+    font-weight: 500;
+
+    &:hover { text-decoration: underline; }
+  }
+}
+
+@media (max-width: $breakpoint) {
+  .navbar-inner {
+    padding: 0 1rem;
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .navbar-brand {
+    order: 1;
+    padding: 0.75rem 0.5rem;
+    margin-right: 0;
+    border-radius: 0;
+  }
+
+  .rss-btn {
+    order: 2;
+    margin-right: 0.5rem;
+  }
+
+  .navbar-tabs {
+    order: 3;
+    width: 100%;
+  }
+
+  .tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+}

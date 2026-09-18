@@ -1,0 +1,36 @@
+<div class="section-header">
+    <h1>{{ section.title }}</h1>
+    {% if section.description %}
+    <p class="section-description">{{ section.description }}</p>
+    {% endif %}
+</div>
+
+{% if section.content %}
+<div class="section-body markdown">
+    {{ section.content | safe }}
+</div>
+{% endif %}
+
+{% if section.pages %}
+<div class="card-search-wrap" hidden>
+    <div class="card-search">
+        {{ load_data(path="icons/search.svg") | safe }}
+        <input type="search" id="card-search" placeholder="search keywords" aria-label="search keywords">
+    </div>
+    <label class="search-desc">
+        <input type="checkbox" id="search-desc">
+        <span>{{ load_data(path="icons/check.svg") | safe }}</span>
+        also search descriptions
+    </label>
+</div>
+<div class="card-grid">
+    {% for item in section.pages %}
+        {% set item = item %}
+        {% include "partials/card.html" %}
+    {% endfor %}
+</div>
+<p class="empty-state search-empty" hidden>Nothing matches that search.</p>
+<script src="{{ get_url(path='search.js') }}"></script>
+{% else %}
+<p class="empty-state">Nothing here yet — check back soon!</p>
+{% endif %}

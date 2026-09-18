@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body_class %}{% endblock body_class %}
+
+{% block title %}404 ~ {{ config.title }}{% endblock title %}
+{% block description %}Page not found.{% endblock description %}
+
+{% block content %}
+<div class="not-found">
+    {{ load_data(path="icons/fish.svg") | safe }}
+    <h1>404</h1>
+    <p>You've drifted off the map ~ this page is sleeping with the fishes.</p>
+    <a href="/" class="not-found-home">&larr; Swim back home</a>
+</div>
+{% endblock content %}

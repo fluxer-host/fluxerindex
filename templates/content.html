@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block body_class %}{% set seg = page.relative_path | split(pat="/") %}{% set sec = get_section(path=seg[0] ~ "/_index.md") %}bg-{{ sec.extra.accent }}{% endblock body_class %}
+
+{% block title %}{{ page.title }} - {{ config.title }}{% endblock title %}
+{% block description %}{{ page.extra.description | default(value=config.description) }}{% endblock description %}
+
+{% block content %}
+{% set seg = page.relative_path | split(pat="/") %}
+{% set sec = get_section(path=seg[0] ~ "/_index.md") %}
+<div class="detail-page">
+    <a href="/{{ seg[0] }}/" class="back-link">← Back to {{ sec.title }}</a>
+    <div class="detail-card">
+        <div class="detail-header">
+            <h1>{{ page.title }}</h1>
+            {% if page.extra.tags %}
+            {% for tag in page.extra.tags %}
+            <span class="meta-tag">{{ tag }}</span>
+            {% endfor %}
+            {% endif %}
+            {% if page.extra.official %}
+            <span class="badge badge-official">{{ load_data(path=config.extra.official_icon | default(value="assets/fluxer.svg")) | safe }} {{ config.extra.official_label | default(value="Official") }}</span>
+            {% endif %}
+        </div>
+        {% if page.extra.description %}
+        <p class="detail-description">{{ page.extra.description }}</p>
+        {% endif %}
+        {% if page.extra.url %}
+        <a href="{{ page.extra.url }}" class="card-url" target="_blank" rel="noopener">{{ page.extra.url | replace(from="https://", to="") }}</a>
+        {% endif %}
+        {% if page.extra.url and page.content %}
+        <div class="detail-separator"></div>
+        {% endif %}
+        {% if page.content %}
+        <div class="markdown">
+            {{ page.content | safe }}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

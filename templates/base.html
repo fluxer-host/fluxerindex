@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    {% set description_text %}{% block description %}{{ config.description }}{% endblock description %}{% endset %}
+    {% set og_title_text %}{% block og_title %}{{ config.title }}{% endblock og_title %}{% endset %}
+    {%- set path_parts = current_path | default(value="/404") | split(pat="/") %}
+    {%- set seg = path_parts[1] | default(value="") %}
+    {%- set feed_file = config.feed_filenames | first %}
+    {%- set feed_href = "" %}
+    {%- set feed_title = "" %}
+    {%- if seg == "" %}
+    {%- set root_sec = get_section(path="_index.md") %}
+    {%- if root_sec.subsections | length > 0 %}
+    {%- set first_sec = get_section(path=root_sec.subsections | first) %}
+    {%- if first_sec.generate_feeds %}
+    {%- set feed_href = first_sec.permalink ~ feed_file %}
+    {%- set feed_title = first_sec.title %}
+    {%- endif %}
+    {%- endif %}
+    {%- else %}
+    {%- set cur_sec = get_section(path=seg ~ "/_index.md", allow_missing=true) %}
+    {%- if cur_sec and cur_sec.generate_feeds %}
+    {%- set feed_href = cur_sec.permalink ~ feed_file %}
+    {%- set feed_title = cur_sec.title %}
+    {%- endif %}
+    {%- endif %}
+    {%- if feed_href %}
+    <link rel="alternate" type="application/rss+xml" title="{{ config.title }} — {{ feed_title }}" href="{{ feed_href }}">
+    {%- endif %}
+    {% include "partials/head.html" %}
+</head>
+<body class="{% block body_class %}{% endblock body_class %}">
+    {% include "partials/navbar.html" %}
+    <div class="page-scroll">
+        <main class="main-content">
+            {% block content %}{% endblock content %}
+        </main>
+        {% include "partials/footer.html" %}
+    </div>
+</body>
+</html>

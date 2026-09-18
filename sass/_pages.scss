@@ -1,0 +1,160 @@
+// entry detail card thingy
+.detail-page {
+  max-width: 100%;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: $grey-400;
+  margin-bottom: 1.5rem;
+
+  &:hover {
+    color: $grey-600;
+  }
+}
+
+.detail-card {
+  background-color: $grey-100;
+  border-radius: $card-radius;
+  padding: 2rem;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .meta-tag {
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+.detail-description {
+  font-size: 1.05rem;
+  color: $grey-600;
+  margin-bottom: 0.4rem;
+}
+
+.detail-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.detail-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.field-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $grey-400;
+}
+
+.field-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $grey-800;
+}
+
+.detail-card .card-url {
+  display: block;
+  white-space: normal;
+}
+
+.detail-separator {
+  height: 4px;
+  border-radius: 999px;
+  background: $grey-200;
+  margin: 1.25rem 0;
+}
+
+// about
+.about-page {
+  max-width: 700px;
+
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+}
+// about page text follows the accent via the bg-light-text/bg-dark-text mixins in _colors.scss
+
+// 404
+.not-found {
+  text-align: center;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  svg {
+    @include pixel-icon(96px);
+    color: $blue;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: $grey-600;
+  }
+}
+
+.not-found-home {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: $border-radius;
+  background-color: $black;
+  color: $white;
+  font-weight: 600;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+@media (max-width: $breakpoint) {
+  .detail-card {
+    padding: 1.5rem;
+  }
+
+  .detail-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .detail-meta {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (orientation: portrait) {
+  .main-content:has(.detail-page) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

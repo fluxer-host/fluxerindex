@@ -1,0 +1,20 @@
+<div class="card" data-search="{{ item.title }}{% if item.extra.tags %} {{ item.extra.tags | join(sep=' ') }}{% endif %}" data-description="{{ item.extra.description | default(value='') }}">
+    <a class="card-hit" href="{{ item.permalink }}" aria-label="{{ item.title }}"></a>
+    <div class="card-header">
+        <h3 class="card-title">{{ item.title }}</h3>
+        {% if item.extra.official %}
+        <span class="badge badge-official">{{ load_data(path=config.extra.official_icon | default(value="assets/fluxer.svg")) | safe }} {{ config.extra.official_label | default(value="Official") }}</span>
+        {% endif %}
+    </div>
+    {% if item.extra.description %}
+    <p class="card-description">{{ item.extra.description }}</p>
+    {% endif %}
+    <div class="card-meta">
+        {% for tag in item.extra.tags | default(value=[]) %}
+        <span class="meta-tag">{{ tag }}</span>
+        {% endfor %}
+    </div>
+    {% if item.extra.url %}
+    <a href="{{ item.extra.url }}" class="card-url" target="_blank" rel="noopener">{{ item.extra.url | replace(from="https://", to="") }}</a>
+    {% endif %}
+</div>

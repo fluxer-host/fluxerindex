@@ -1,0 +1,37 @@
+{% set path_parts = current_path | default(value="/404") | split(pat="/") %}
+{% set seg = path_parts[1] | default(value="") %}
+{% set root = get_section(path="_index.md") %}
+{% set no_subs = root.subsections | length == 0 %}
+<nav class="navbar">
+    <div class="navbar-inner">
+        <span class="navbar-brand">
+            {%- if config.extra.logo %}
+            {{ load_data(path=config.extra.logo) | safe }}
+            {%- endif %}
+            {{ config.title }}
+        </span>
+        <ul class="navbar-tabs">
+            {%- for sub_path in root.subsections %}
+            {%- set sec = get_section(path=sub_path) %}
+            {%- set item_seg = sec.components | first %}
+            <li>
+                <a href="{{ sec.permalink }}" class="tab bg-{{ sec.extra.accent }}{% if seg == item_seg or (seg == "" and loop.first) %} active{% endif %}">{{ sec.title }}</a>
+            </li>
+            {%- endfor %}
+            {%- for item in root.pages %}
+            {%- if item.components | length == 1 %}
+            {%- set item_seg = item.components | first %}
+            <li>
+                <a href="{{ item.permalink }}" class="tab bg-{{ item.extra.accent }}{% if seg == item_seg or (seg == "" and no_subs and loop.first) %} active{% endif %}">{{ item.title }}</a>
+            </li>
+            {%- endif %}
+            {%- endfor %}
+        </ul>
+        {%- if feed_href %}
+        <a href="{{ feed_href }}" class="rss-btn" title="RSS feed" aria-label="RSS feed">
+            {{ load_data(path="icons/rss.svg") | safe }}
+            <span class="rss-label">RSS</span>
+        </a>
+        {%- endif %}
+    </div>
+</nav>

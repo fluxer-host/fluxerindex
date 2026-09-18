@@ -1,0 +1,23 @@
+base_url = "https://index.fluxer.host"
+
+compile_sass = true
+
+build_search_index = false
+
+title = "FluxerIndex"
+description = "A demo site for the FluxerIndex Zola theme used in FluxerHow and FluxerDomains."
+
+feed_filenames = ["rss.xml"]
+
+[markdown]
+insert_anchor_links = "left"
+
+[markdown.highlighting]
+theme = "github-dark-high-contrast"
+
+[extra]
+logo = "assets/icon.svg"
+
+footer = """FluxerIndex demo ~ [FluxerIndex](https://github.com/fluxer-host/fluxerindex) Zola theme by [FluxerHost](https://fluxer.host/).
+
+Not affiliated with Fluxer Platform AB."""

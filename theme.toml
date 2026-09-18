@@ -1,0 +1,17 @@
+name = "FluxerIndex"
+description = "Flat, borderless listing theme for Zola: card-grid libraries of links and docs with per-section accent colors, a content-driven navbar, and client-side search."
+license = "GPL-3.0"
+homepage = "https://github.com/fluxer-host/fluxerindex"
+min_version = "0.23.0"
+demo = "https://index.fluxer.host"
+
+[extra]
+logo = "assets/icon.svg"
+# footer text, markdown allowed
+footer = """Powered by [FluxerIndex](https://index.fluxer.host)."""
+# official fluxer product badge: shown on entries with 'official = true' as set right now
+official_icon = "assets/fluxer.svg"
+official_label = "Official"
+
+[author]
+name = "AshtakaOOf"
