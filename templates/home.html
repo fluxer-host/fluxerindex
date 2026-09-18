@@ -1,3 +1,11 @@
 {% extends "base.html" %}
 
 {% block body_class %}{% set root_sec = get_section(path="_index.md") %}{% if root_sec.subsections | length > 0 %}{% set first_sec = get_section(path=root_sec.subsections | first) %}bg-{{ first_sec.extra.accent }}{% endif %}{% endblock body_class %}
+
+{% block content %}
+{% set root_sec = get_section(path="_index.md") %}
+{% if root_sec.subsections | length > 0 %}
+{% set section = get_section(path=root_sec.subsections | first) %}
+{% include "partials/section-content.html" %}
+{% endif %}
+{% endblock content %}
