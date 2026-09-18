@@ -94,6 +94,10 @@
     letter-spacing: -0.03em;
     margin-bottom: 1.5rem;
   }
+
+  .markdown a {
+    text-decoration: underline;
+  }
 }
 // about page text follows the accent via the bg-light-text/bg-dark-text mixins in _colors.scss
 

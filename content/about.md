@@ -8,22 +8,35 @@ description = "About this demo site"
 accent = "rose"
 +++
 
-# FluxerIndex
+FluxerIndex is a flat, borderless [Zola](https://www.getzola.org/) theme built for indexing various Fluxer related projects. It powers [FluxerHow](https://fluxer.how) and [FluxerDomains](https://fluxer.domains/), this page is where you can see how unique and cool it is.
 
-FluxerIndex is a flat, borderless [Zola](https://www.getzola.org/) theme for listing libraries of links and docs: card grids, per-section accent colors, a content-driven navbar, official badges and client-side search. It powers [FluxerHow](https://fluxer.how), the community knowledge hub for Fluxer, and this site is its demo.
+## Features
 
-## What it does
+- **Card grids** 
 
-- **Card listing** — every entry is a markdown file with a title, description, tags, an external url and an optional official badge. Sections render as a searchable card grid, entries render as detail pages.
-- **Content-driven navbar** — tabs come straight from your content: each section's `_index.md` provides its title, weight and accent color, no theme config needed.
-- **Accent colors** — each section paints the whole page in its accent defined in the `sass/_colors.scss`, with text contrast handled automatically.
-- **Feeds** — sections opt into RSS with `generate_feeds`, the navbar and page head pick the right feed from wherever you are.
-- **Search** — a tiny dependency-free script filters cards by title and tags, optionally by description.
+Drop markdown files into a section and they show up as searchable cards, complete with tags, external links etc.
+- **Content-driven navbar** 
 
-## The Fluxer ecosystem
+Tabs are generated straight from the content folder and markdown files, no complicated configuration it's basically automatic.
+- **Accent colors** 
 
-FluxerIndex is community projects around [Fluxer](https://fluxer.app/), the open-source chat platform. [FluxerHost](https://fluxer.host/) offers free community hosting for Fluxer instances, bots and projects. Neither is affiliated with Fluxer Platform AB.
+Each section paints the background in its accent defined in the `sass/_colors.scss`, with text contrast handled automatically.
+- **Per-section RSS** 
+
+Each section has an rss script, perhaps we could sync updates to Fluxer trough an RSS bot.
+- **Instant search**
+
+It has its own little super fast js search script, that's less than a thousand bytes.
+- **Markdown support**
+
+Entries have full markdown support with syntax-highlighted code blocks, tables, and anchor links (see the [Markdown demo](@/documentation/markdown.md) also this page is written in markdown).
+
+## Ecosystem
+
+FluxerIndex and [FluxerHost](https://fluxer.host/) are community projects built around [Fluxer](https://fluxer.app/), the open-source chat app. FluxerHost offers free community hosting for Fluxer instances, bots, and tools.
+
+FluxerHost and its projects aren't affiliated with Fluxer Platform AB.
 
 ## Credits
 
-Designed by [AshtakaOOf](https://github.com/AshtakaOOf), licensed GPL-3.0. Icons are [pixelarticons](https://github.com/halfmage/pixelarticons) (MIT), the body font is [Lexend](https://fonts.google.com/specimen/Lexend) (SIL OFL 1.1). Built with Zola.
+Made by [AshtakaOOf](https://github.com/AshtakaOOf) and licensed under GPL-3.0 (copyleft is cool). Pixel art icons are from [pixelarticons](https://github.com/halfmage/pixelarticons) (MIT), and the font is [Lexend](https://fonts.google.com/specimen/Lexend) (SIL OFL 1.1).
